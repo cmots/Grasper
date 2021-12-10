@@ -270,7 +270,6 @@ class Worker {
         vector<Expert_Object> experts;
         string error_msg;
         bool success = parser_->Parse(query, experts, error_msg);
-
         if (success) {
             LogicPlan plan(qid);
             plan.Feed(experts);
@@ -452,8 +451,8 @@ class Worker {
 
         fflush(stdout);
         worker_barrier(my_node_);
-        if (my_node_.get_world_rank() == MASTER_RANK) cout << "Grasper Servers Are All Ready ..." << endl;
-
+        if (my_node_.get_world_rank() == MASTER_RANK) 
+			cout << "Grasper Servers Are All Ready ..." << endl;
 
         // pop out the query result from collector
         // TODO(future) add SIG to break and return

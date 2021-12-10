@@ -30,6 +30,7 @@ class ThreadSafeQueue : public AbstractThreadSafeQueue<T> {
 
     void WaitAndPop(T & elem) override {
         std::unique_lock<std::mutex> lk(mu_);
+
         cond_.wait(lk, [this] { return !queue_.empty(); });
         elem = std::move(queue_.front());
         queue_.pop();

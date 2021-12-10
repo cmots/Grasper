@@ -4,6 +4,7 @@
 cmake_minimum_required(VERSION 3.3.0)
 project(GRASPER)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS  1) 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/release/)
 
 #CONFIGURE ME!!!
