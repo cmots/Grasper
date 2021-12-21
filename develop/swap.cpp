@@ -141,7 +141,7 @@ void swap::LFUSwap()
     while (true)
     {
         srand((unsigned)time(NULL));
-        vector<pair<gobj, int>(gobj, int)> tmp_gobjs;
+        vector<pair<gobj, int>> tmp_gobjs;
         for (int i =0;i< _pool_size;i++)
         {
             int r = rand() % _gobjs.size();
@@ -149,12 +149,12 @@ void swap::LFUSwap()
             tmp_gobjs.push_back(pair<gobj, int>(_gobjs.at(r), r));
         }
         std::sort(tmp_gobjs.begin(), tmp_gobjs.end(), comp);
-        swapOut(tmp_gobjs.at[0].second);
+        swapOut(tmp_gobjs.at(0).second);
         std::this_thread::sleep_for(std::chrono::milliseconds(_interval * 100));
     }
 }
 
-inline bool comp(pair<gobj, int>(gobj, int) & a, pair<gobj, int>(gobj, int) & b)
+inline bool comp(pair<gobj, int> & a, pair<gobj, int> & b)
 {
     if (a.first.counter <= b.first.counter)
         return true;
