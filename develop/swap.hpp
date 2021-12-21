@@ -16,14 +16,13 @@ typedef struct grasperObject {    // Grasper Object
 class swap
 {
 private:
-    unsigned int _interval;
-    unsigned int _pool_size;
-    int lfu_incr_factor;
-    uint8_t init_counter;
-    std::time_t currentTime;    //useless
-    bool swapOut(int pos);
-    bool swapIn(int pos);
-    vector<gobj> _gobjs;
+    static unsigned int _interval;
+    static unsigned int _pool_size;
+    static int lfu_incr_factor;
+    static uint8_t init_counter;
+    static bool swapOut(int pos);
+    static bool swapIn(int pos);
+    static vector<gobj> _gobjs;
 
 
 public:
