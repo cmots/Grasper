@@ -34,7 +34,7 @@ public:
     uint8_t LFUDecreaseAndReturn(gobj &gobj);
     gobj* createGrasperObj(ikey_t key);
     uint16_t getCurrentTime();
-    void LFUSwap(unsigned int interval, int pool_size);
+    void LFUSwap();
     
 };
 
@@ -45,7 +45,7 @@ swap::swap(unsigned int interval, int pool_size, int factor, uint8_t counter)
     this->lfu_incr_factor = factor;
     this->init_counter = counter;
     this->currentTime = std::time(0);
-    std::thread swap_t(LFUSwap, interval, pool_size);
+    std::thread swap_t(LFUSwap);
 }
 
 swap::~swap()
