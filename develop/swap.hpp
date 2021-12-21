@@ -21,20 +21,20 @@ private:
     int lfu_incr_factor;
     uint8_t init_counter;
     std::time_t currentTime;    //useless
-    bool swapOut(vector<gobj> objs);
-    bool swapIn(vector<gobj> objs);
+    bool swapOut(int pos);
+    bool swapIn(int pos);
     vector<gobj> _gobjs;
 
 
 public:
-    swap(int interval, int pool_size);
+    swap(int interval, int pool_size, int factor, uint8_t counter);
     ~swap();
-    uint64_t getIdleTime(uint16_t time);
+    uint16_t getIdleTime(uint16_t time);
     uint8_t LFUIncreaseAndReturn(gobj &gobj);
     uint8_t LFUDecreaseAndReturn(gobj &gobj);
     gobj* createGrasperObj(ikey_t key);
     uint16_t getCurrentTime();
-    void LFUSwap(int interval, int pool_size);
+    void LFUSwap(unsigned int interval, int pool_size);
     
 };
 
@@ -50,5 +50,5 @@ swap::swap(unsigned int interval,unsigned int pool_size, int factor, uint8_t cou
 
 swap::~swap()
 {
-    vector<gobj>.swap(_gobjs);
+    vector<gobj>().swap(_gobjs);
 }

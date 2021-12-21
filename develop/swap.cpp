@@ -73,7 +73,7 @@ gobj *swap::createGrasperObj(ikey_t key)
     gobj->key = key;
     gobj->counter = init_counter;
     gobj->time = getCurrentTime();
-    keys.push_back(gobj);
+    _gobjs.push_back(gobj);
     return gobj;
 }
 
@@ -140,12 +140,12 @@ void swap::LFUSwap(unsigned int interval, int pool_size)
     while (true)
     {
         srand((unsigned)time(NULL));
-        vector<pair(gobj, int)> tmp_gobjs;
+        vector<std::pair(gobj, int)> tmp_gobjs;
         for (int i : pool_size)
         {
             int r = rand() % _gobjs.size();
             LFUDecreaseAndReturn(&_gobjs.at(r));
-            tmp_gobjs.push_back(pair(_gobjs.at(r), r));
+            tmp_gobjs.push_back(std::pair(_gobjs.at(r), r));
         }
         std::sort(tmp_gobjs.begin(), tmp_gobjs.end(), comp);
         swapOut(tmp_gobjs.at[0].second);
@@ -153,7 +153,7 @@ void swap::LFUSwap(unsigned int interval, int pool_size)
     }
 }
 
-inline bool comp(const pair(gobj, int) & a, const pair(gobj, int) & b)
+inline bool comp(std::pair(gobj, int) & a, std::pair(gobj, int) & b)
 {
     if (a.first.counter <= b.first.counter)
         return true;
