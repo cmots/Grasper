@@ -43,8 +43,7 @@ swap::swap(unsigned int interval, int pool_size, int factor, uint8_t counter)
     this->_pool_size = pool_size;
     this->lfu_incr_factor = factor;
     this->init_counter = counter;
-    this->currentTime = std::time(0);
-    std::thread swap_t(LFUSwap,NULL);
+    std::thread swap_t(LFUSwap);
 }
 
 swap::~swap()
