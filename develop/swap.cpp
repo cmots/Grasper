@@ -9,7 +9,7 @@
  * @param  time: last check time
  * @retval time diff between last time and current
  */
-uint16_t swap::getIdleTime(uint16_t time)
+static uint16_t swap::getIdleTime(uint16_t time)
 {
     uint16_t now = getCurrentTime();
     if (now >= time)
@@ -24,7 +24,7 @@ uint16_t swap::getIdleTime(uint16_t time)
  * @param  &gobj: 
  * @retval 
  */
-uint8_t swap::LFUIncreaseAndReturn(gobj &gobj)
+static uint8_t swap::LFUIncreaseAndReturn(gobj &gobj)
 {
     uint8_t counter = gobj.counter;
     if (counter == 255)
@@ -48,7 +48,7 @@ uint8_t swap::LFUIncreaseAndReturn(gobj &gobj)
  * @param  &gobj: the gobj to be operated
  * @retval counter after decrease
  */
-uint8_t swap::LFUDecreaseAndReturn(gobj &gobj)
+static uint8_t swap::LFUDecreaseAndReturn(gobj &gobj)
 {
     uint16_t last_time = gobj.time;
     uint8_t counter = gobj.counter;
@@ -67,7 +67,7 @@ uint8_t swap::LFUDecreaseAndReturn(gobj &gobj)
  * @param  key: the key of grasper object
  * @retval the newly create grasper object
  */
-gobj *swap::createGrasperObj(ikey_t key)
+static gobj *swap::createGrasperObj(ikey_t key)
 {
     gobj *gobj = malloc(sizeof(gobj));
     gobj->key = key;
@@ -82,12 +82,12 @@ gobj *swap::createGrasperObj(ikey_t key)
  * @note   
  * @retval the current time in unit of minute
  */
-uint16_t swap::getCurrentTime()
+static uint16_t swap::getCurrentTime()
 {
     return (std::time(0) / 60) & 65535;
 }
 
-bool swap::swapOut(int pos)
+static bool swap::swapOut(int pos)
 {
     return true;
 
@@ -111,7 +111,7 @@ bool swap::swapOut(int pos)
     // return true;
 }
 
-bool swap::swapIn(int pos)
+static bool swap::swapIn(int pos)
 {
     return true;
     // string fn="";
@@ -145,7 +145,7 @@ inline bool comp(pair<gobj, int> & a, pair<gobj, int> & b)
         return false;
 }
 
-void swap::LFUSwap()
+static void swap::LFUSwap()
 {
     while (true)
     {

@@ -29,12 +29,12 @@ private:
 public:
     swap(unsigned int interval, int pool_size, int factor, uint8_t counter);
     ~swap();
-    uint16_t getIdleTime(uint16_t time);
-    uint8_t LFUIncreaseAndReturn(gobj &gobj);
-    uint8_t LFUDecreaseAndReturn(gobj &gobj);
-    gobj* createGrasperObj(ikey_t key);
-    uint16_t getCurrentTime();
-    void LFUSwap();
+    static uint16_t getIdleTime(uint16_t time);
+    static uint8_t LFUIncreaseAndReturn(gobj &gobj);
+    static uint8_t LFUDecreaseAndReturn(gobj &gobj);
+    static gobj* createGrasperObj(ikey_t key);
+    static uint16_t getCurrentTime();
+    static void LFUSwap();
     
 };
 
@@ -45,7 +45,7 @@ swap::swap(unsigned int interval, int pool_size, int factor, uint8_t counter)
     this->lfu_incr_factor = factor;
     this->init_counter = counter;
     this->currentTime = std::time(0);
-    std::thread swap_t(&LFUSwap,NULL);
+    std::thread swap_t(LFUSwap,NULL);
 }
 
 swap::~swap()
