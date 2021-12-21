@@ -136,6 +136,15 @@ bool swap::swapIn(int pos)
     // return true;
 }
 
+
+inline bool comp(pair<gobj, int> & a, pair<gobj, int> & b)
+{
+    if (a.first.counter <= b.first.counter)
+        return true;
+    else
+        return false;
+}
+
 void swap::LFUSwap()
 {
     while (true)
@@ -154,10 +163,3 @@ void swap::LFUSwap()
     }
 }
 
-inline bool comp(pair<gobj, int> & a, pair<gobj, int> & b)
-{
-    if (a.first.counter <= b.first.counter)
-        return true;
-    else
-        return false;
-}
