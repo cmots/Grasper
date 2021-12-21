@@ -2,7 +2,7 @@
 #include "storage/vkvstore.hpp"
 #include "storage/ekvstore.hpp"
 
-#include <cstdlib.h>
+#include <cstdlib>
 /**
  * @brief  get the difference between current time and last check time
  * @note   if now < time, it turns to next round, like carrying
