@@ -27,7 +27,7 @@ private:
 
 
 public:
-    swap(int interval, int pool_size, int factor, uint8_t counter);
+    swap(unsigned int interval, int pool_size, int factor, uint8_t counter);
     ~swap();
     uint16_t getIdleTime(uint16_t time);
     uint8_t LFUIncreaseAndReturn(gobj &gobj);
@@ -38,7 +38,7 @@ public:
     
 };
 
-swap::swap(unsigned int interval,unsigned int pool_size, int factor, uint8_t counter)
+swap::swap(unsigned int interval, int pool_size, int factor, uint8_t counter)
 {
     this->_interval = internal;
     this->_pool_size = pool_size;
